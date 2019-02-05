@@ -1,0 +1,18 @@
+body {
+	background: linear-gradient(to right, #007F80, #071B52);
+  margin: 0;
+  padding: 0;
+font-family: 'ABeeZee', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#header{
+	font-family: 'Permanent Marker', cursive;
+	font-weight: 200;
+	color: #0ccac4;
+}
+
+/*code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}*/
