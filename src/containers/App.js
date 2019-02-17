@@ -4,12 +4,13 @@ import CardList from '../components/CardList'
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundry';
-import {setSearchField,requestRobots} from '../actions';
+import {setSearchField,requestRobots,requestStarwars} from '../actions';
 
 const mapStateToProps=(state)=>{
 	return {
 		searchField:state.serachRobots.searchField,
 		robots:state.requestRobots.robots,
+		starwars:state.requestRobots.starwars,
 		isPending:state.requestRobots.isPending,
 		error:state.requestRobots.error
 	}
@@ -17,7 +18,8 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps=(dispatch)=>{
 	return{
 		onSearchChange:(event)=>dispatch(setSearchField(event.target.value)),
-		onRequestRobots:()=>dispatch(requestRobots())
+		onRequestRobots:()=>dispatch(requestRobots()),
+		onStarWars:()=>dispatch(requestStarwars())
 	}
 }
 
@@ -26,11 +28,13 @@ class App extends Component{
 
 	componentDidMount(){
 		this.props.onRequestRobots();
+		this.props.onStarWars();
 	}
 
 	render(){
-		// const{robots}=this.state;
-		const{searchField,onSearchChange,robots,isPending}=this.props;
+		const{searchField,onSearchChange,robots,isPending,starwars}=this.props;
+		// console.log(robots,'askljfajkdsl')
+		console.log(starwars,'askljfaj156116kdsl')
 		const filteredRobots=robots.filter(robot=>{
 			return robot.name.toLowerCase().includes(searchField.toLowerCase())
 		})
@@ -41,7 +45,7 @@ class App extends Component{
 		<SearchBox searchField={searchField} searchChange={onSearchChange}/>
 		<Scroll>
 		<ErrorBoundry>
-		<CardList id="cardList" robots={filteredRobots}/>
+		<CardList id="cardList" robots={filteredRobots} starwars={starwars}/>
 		</ErrorBoundry>
 		</Scroll>
 		</div>);}
